@@ -1,0 +1,32 @@
+ 
+<!DOCTYPE html>
+<html lang"en">
+<head>
+<meta name='viewport' http-equiv="Content-Type" content="device-width; charset=UTF-8" />
+<title>카카오톡 로그인</title>
+<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+</head>
+<body>
+  <a href="javascript:kakaoLogin();"><img src="https://jade201711424.netlify.app/img/2.jpg"/></a>
+  <script>
+    window.Kakao.init("de152df1874d7db3eb4b53488482b1b7");
+
+    function kakaoLogin() {
+      window.Kakao.Auth.login({
+        scope: 'profile_nickname, profile_image',
+        success: function(authObj){
+          console.log(authObj);
+          window.Kakao.API.request({
+            url: '/v2/usr/me',
+            success: res => {
+              const kakao_account = res.kakao_account;
+              console.log(kakao_aacount);
+            }
+          });
+        }
+      });
+    }
+</script>
+    
+</body>
+</html>
